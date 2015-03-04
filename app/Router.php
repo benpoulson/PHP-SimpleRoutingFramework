@@ -22,7 +22,7 @@
 			self::$routes[$request_type][$pattern] = $callback;
 		}
 
-		public static function executeRoute($url) {
+		private static function executeRoute($url) {
 			$request_type = $_SERVER['REQUEST_METHOD'];
 			foreach (self::$routes[$request_type] as $regex => $function) {
 				if (preg_match($regex, $url, $params)) {
@@ -32,7 +32,6 @@
 				}
 			}
 		}
-
 	}
 
 ?>
