@@ -19,9 +19,6 @@
 		}
 	}
 
-	/* Initialise the routing engine */
-	Router::initialise();
-
 	/* GET /user/13214/edit/ */
 	Router::addRoute('GET', '/user/(?<user_id>[0-9]+)/(?<action>[a-z]+)/?', function($args) {
 		print_r($args);

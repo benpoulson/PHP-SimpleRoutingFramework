@@ -10,19 +10,13 @@
 	class Router {
 
 		private static $routes = [];
-
-		public static function initialise() {
-			register_shutdown_function(function() {
-				self::executeRoute($_SERVER['REQUEST_URI']);
-			});
-		}
 		
 		public static function addRoute($request_type, $pattern, $callback) {
 			$pattern = '/^' . str_replace('/', '\/', $pattern) . '$/';
 			self::$routes[$request_type][$pattern] = $callback;
 		}
 
-		private static function executeRoute($url) {
+		public static function executeRoute($url) {
 			$request_type = $_SERVER['REQUEST_METHOD'];
 			foreach (self::$routes[$request_type] as $regex => $function) {
 				if (preg_match($regex, $url, $params)) {
@@ -33,5 +27,9 @@
 			}
 		}
 	}
+
+	register_shutdown_function(function() {
+		Router::executeRoute($_SERVER['REQUEST_URI']);
+	});
 
 ?>
