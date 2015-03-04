@@ -27,7 +27,8 @@
 			foreach (self::$routes[$request_type] as $regex => $function) {
 				if (preg_match($regex, $url, $params)) {
 					array_shift($params);
-					return call_user_func_array($function, array_values($params));
+					ksort($params, SORT_NATURAL);
+					return call_user_func_array($function, [$params]);
 				}
 			}
 		}
