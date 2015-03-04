@@ -37,12 +37,12 @@
 	});
 
 	/* GET /user/ */
-	Router::addRoute('GET', '/user/?', function($arg) {
+	Router::addRoute('GET', '/user/?', function() {
 		echo 'List all users';
 	});
 
 	/* GET / */
-	Router::addRoute('GET', '/?', function($arg) {
+	Router::addRoute('GET', '/?', function() {
 		echo 'Home';
 	});
 

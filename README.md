@@ -22,12 +22,12 @@ Router::addRoute('GET', '/user/(?<user_id>[0-9]+)/(?<action>[a-z]+)/?', function
 });
 
 /* GET /user/ */
-Router::addRoute('GET', '/user/?', function($arg) {
+Router::addRoute('GET', '/user/?', function() {
 	echo 'List all users';
 });
 
 /* GET / */
-Router::addRoute('GET', '/?', function($arg) {
+Router::addRoute('GET', '/?', function() {
 	echo 'Home';
 });
 ```
